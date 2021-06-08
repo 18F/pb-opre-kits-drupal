@@ -20,5 +20,7 @@ RUN apt-get update && \
 RUN usermod -g www-data root
 RUN chmod -R g+w /opt/drupal
 
+COPY apache-drupal.conf /etc/apache2/sites-enabled/000-default.conf
+
 ADD init.sh /init.sh
 ENTRYPOINT ["/init.sh"];
