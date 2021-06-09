@@ -1,13 +1,10 @@
-FROM drupal:9
-
-# Install drush to simplify creating sites.
-RUN composer require drush/drush "^8.0.0"
+FROM drupal:8
 
 # Add a default MySQL client. This will use something about the system
 # configuration to figure out which client is appropriate. For this container,
 # it turns out that it's MariaDB. :shrug:
 RUN apt-get update && \
-  apt-get install -y default-mysql-client && \
+  apt-get install -y mariadb-server default-mysql-client && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/*
 
